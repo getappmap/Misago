@@ -58,3 +58,9 @@ pylint.txt
 
 # Docker Compose Override
 docker-compose.override.yml
+
+tmp/appmap
+test
+
+# Ignore AppMap archives and working files
+/.appmap
