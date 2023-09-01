@@ -61,7 +61,7 @@ jobs:
 
   appmap-analysis:
     if: always()
-    runs-on: ubuntu-latest
+    runs-on: 4_Core_Runner
 
     needs: [ record-appmaps ]
     
@@ -73,8 +73,12 @@ jobs:
         with:
           install-appmap-library: false
       
+      - name: Increase HEAP for JS
+        run: |
+          echo "NODE_OPTIONS="--max_old_space_size=16384"" >> $GITHUB_ENV
+
       - name: Merge AppMaps
-        uses: getappmap/archive-action/merge@v1
+        uses: getappmap/archive-action/merge@feat/fix-openapi-command
         with:
           revision: ${{ github.event.pull_request.base.sha }}
           archive-count: 18
