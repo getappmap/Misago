@@ -78,7 +78,7 @@ jobs:
           echo "NODE_OPTIONS="--max_old_space_size=16384"" >> $GITHUB_ENV
 
       - name: Merge AppMaps
-        uses: getappmap/archive-action/merge@feat/dont-generate-openapi
+        uses: getappmap/archive-action/merge@feat/fix-openapi-command
         with:
           revision: ${{ github.event.pull_request.base.sha }}
           archive-count: 18
